@@ -17,7 +17,7 @@
         document.documentElement.classList.remove('dark')
     }
 </script>
-{{ $styles := resources.Get "/css/.generated/style.css" | postCSS }}
+{{ $styles := resources.Get "/css/out/style.css" | postCSS }}
 {{ if .Site.IsServer }}
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}" />
 {{ else }}
