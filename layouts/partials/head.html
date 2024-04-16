@@ -27,5 +27,13 @@
 
 {{ if .Site.Params.IncludeStars }}
   {{ $stars := resources.Get "/css/out/stars.min.css" | postCSS }}
-  <link rel="stylesheet" href="{{ $stars.RelPermalink }}" />
+  <link rel="preload" href="{{ $stars.RelPermalink }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="{{ $stars.RelPermalink }}"></noscript>
 {{ end}}
+
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+{{ if not .Site.Params.DisableThemeToggle }}
+  {{ $js := resources.Get "js/darkmode.js" | js.Build }}
+  <script defer src="{{ $js.RelPermalink }}"></script>
+{{ end }}
+

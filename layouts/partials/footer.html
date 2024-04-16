@@ -20,11 +20,3 @@
         {{ end }}
     </div>
 </footer>
-
-
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-{{ if not .Site.Params.DisableThemeToggle }}
-{{ $js := resources.Get "js/darkmode.js" | js.Build }}
-<script src="{{ $js.RelPermalink }}" defer></script>
-{{ end }}
