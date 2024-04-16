@@ -74,7 +74,7 @@
 
     <!-- More main page content here... -->
 
-    <!-- Our mission section -->
+    <!-- Details section -->
     <div class="relative my-4">
         <div class="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:items-start lg:gap-24 lg:px-8">
             <div class="relative sm:py-8 lg:py-0">
@@ -90,10 +90,10 @@
                 </div>
                 <div class="relative w-full h-auto px-4 py-6 mx-auto sm:max-w-3xl sm:px-6 lg:px-0 lg:py-20">
                     <div class="overflow-hidden shadow-xl rounded-2xl">
-                        {{ $p1image := resources.Get .Site.Params.P1.Image }}
-                        {{ with $p1image }}
+                        {{ $Detailsimage := resources.Get .Site.Params.Details.Image }}
+                        {{ with $Detailsimage }}
                         {{ with .Resize (printf "%dx%d webp q90" .Width .Height) }}
-                        <img imgh src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" class="w-full h-auto" alt="P1" loading="lazy" />
+                        <img imgh src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" class="w-full h-auto" alt="Details" loading="lazy" />
                         {{ end }}
                         {{ end }}
                     </div>
@@ -102,11 +102,11 @@
             <div class="relative max-w-md px-4 mx-auto sm:max-w-3xl sm:px-6 lg:px-0">
                 <div class="md:pt-12 sm:pt-6 lg:pt-20">
                     <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-50 sm:text-4xl">
-                        {{ .Site.Params.P1.Heading }}
+                        {{ .Site.Params.Details.Heading }}
                     </h2>
                     <div class="mt-6 text-gray-900 dark:text-white">
                         <div class="mt-6 space-y-6 text-gray-900 dark:text-white">
-                            {{ range .Site.Params.P1.Content }}
+                            {{ range .Site.Params.Details.Content }}
                             <p class="text-lg text-gray-900 dark:text-white">
                                 {{ .text }}
                             </p>
@@ -118,17 +118,17 @@
         </div>
     </div>
 
-    <!-- 2nd section -->
+    <!-- More details section -->
     <div class="overflow-hidden sm:pt-6 lg:relative">
         <div class="max-w-md px-4 mx-auto sm:max-w-3xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-12 lg:px-8">
             <div>
                 <div class="md:mt-8">
                     <div class="mt-6 sm:max-w-xl">
                         <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-gray-50 sm:text-4xl md:mt-16">
-                            {{ .Site.Params.P2.Heading }}
+                            {{ .Site.Params.MoreDetails.Heading }}
                         </h2>
                         <div class="mt-6 space-y-6 text-gray-900 dark:text-white">
-                          {{ range .Site.Params.P2.Content }}
+                          {{ range .Site.Params.MoreDetails.Content }}
                           <p class="mt-6 text-lg text-gray-900 dark:text-white">
                               {{ .text }}
                           </p>
@@ -152,10 +152,10 @@
                     </svg>
                 </div>
                 <div class="relative pl-4 -mr-40 sm:mx-auto sm:max-w-3xl sm:px-0 lg:h-full lg:max-w-none lg:pl-12">
-                    {{ $p2image := resources.Get .Site.Params.P2.Image }}
-                    {{ with $p2image }}
+                    {{ $MoreDetailsimage := resources.Get .Site.Params.MoreDetails.Image }}
+                    {{ with $MoreDetailsimage }}
                     {{ with .Resize (printf "%dx%d webp q90" .Width .Height) }}
-                    <img imgh src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="p2" class="w-full rounded-lg shadow-xl lg:h-full lg:w-auto lg:max-w-none" loading="lazy" />
+                    <img imgh src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="MoreDetails" class="w-full rounded-lg shadow-xl lg:h-full lg:w-auto lg:max-w-none" loading="lazy" />
                     {{ end }}
                     {{ end }}
 
@@ -170,7 +170,7 @@
     <div class="max-w-md px-4 mx-auto md:pt-24 md:pb-16 sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
         <div class="lg:grid lg:grid-cols-2 lg:items-center lg:gap-24">
             <div class="mt-12 grid grid-cols-2 gap-0.5 md:grid-cols-3 lg:mt-0 lg:grid-cols-2">
-                {{ range .Site.Params.P3.Logos }}
+                {{ range .Site.Params.Sponsors.Logos }}
                 <div class="flex justify-center col-span-1 px-8 py-8 bg-gray-50 dark:bg-gray-900/10">
                     {{ if .image }}
                     {{ $sponsor := resources.Get .image }}
@@ -184,14 +184,14 @@
             </div>
             <div>
                 <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-50 sm:text-4xl">
-                    {{ .Site.Params.P3.Heading }}
+                    {{ .Site.Params.Sponsors.Heading }}
                 </h2>
-                {{ range .Site.Params.P3.Content }}
+                {{ range .Site.Params.Sponsors.Content }}
                 <p class="max-w-3xl mt-6 text-lg leading-7 text-gray-900 dark:text-white">
                     {{ .text }}
                 </p>
                 {{ end }}
-                {{ range .Site.Params.P3.Links }}
+                {{ range .Site.Params.Sponsors.Links }}
                 <div class="my-6">
                     <a href="{{ .url }}" class="text-base font-medium text-primary-400 dark:text-primary-100">
                         {{ .text }}&nbsp&rarr;
@@ -211,9 +211,9 @@
         <div class="relative px-2 mx-auto max-w-7xl">
             <div class="text-center">
                 <h2 class="text-3xl font-black tracking-tight text-primary-500 dark:text-primary-300 sm:text-4xl">
-                    {{ .Site.Params.P4.Heading }}
+                    {{ .Site.Params.FromTheBlog.Heading }}
                 </h2>
-                {{ range .Site.Params.P4.Content }}
+                {{ range .Site.Params.FromTheBlog.Content }}
                 <p class="max-w-2xl mx-auto mt-3 text-xl text-gray-500 dark:text-gray-300 sm:mt-4">
                     {{ .text }}
                 </p>
