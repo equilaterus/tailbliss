@@ -9,6 +9,9 @@
   {{ partial "home-moredetails" . }}
   {{ partial "home-sponsors" . }}
   {{ partial "home-blog" . }}
+
+  {{ if not .Site.Params.DisableStayUptodateHome }}
   {{ partial "stayuptodate" . }}
+  {{ end }}
 </main>
 {{ end }}

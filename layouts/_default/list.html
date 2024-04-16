@@ -19,4 +19,8 @@
         {{ partial "pagination" . }}
     </div>
 </main>
+
+{{ if not .Site.Params.DisableStayUptodateList }}
+{{ partial "stayuptodate" . }}
+{{ end }}
 {{ end }}
