@@ -1,6 +1,51 @@
 {{ define "main" }}
 
 <main>
+  {{ if .Site.Params.ShowFullIntroVideoSlide }}
+  <header class="relative md:flex items-center justify-center h-[75vh] overflow-hidden bg-black">
+    <div class="md:absolute md:left-0 z-30 md:h-[75vh] 2xl:w-[35vw] lg:w-[50vw] md:w-[65vw] w-full text-white "
+    style="background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);">
+      <div class="flex flex-col justify-center h-full md:w-[80%] px-4 md:px-6 lg:px-8 text-center md:text-left md:py-0 py-6">
+        <h1 class="mb-2 text-4xl font-serif font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl xl:text-6xl dark:text-white">
+            {{ .Site.Params.CallToAction }}
+        </h1>
+        <h2 class="pb-2 text-3xl font-light text-gray-800 dark:text-gray-300 md:text-4xl">
+            {{ .Site.Params.Moto }}
+        </h2>
+        <p class="max-w-xl mx-auto mb-6 font-normal text-gray-900 lg:mx-0 xl:mb-2 md:text-lg xl:text-xl dark:text-gray-50">
+            {{ .Site.Params.Description}}
+        </p>
+      </div>
+    </div>
+    <div class="absolute z-30 p-5 text-white md:text-right text-center md:right-0 w-full bottom-0">
+      <div class="px-4 md:px-6 lg:px-8">
+        <h2 class="text-3xl font-serif font-extrabold md:text-4xl text-shadow-2">
+          {{ .Site.Params.FullIntroVideo.QuoteTitle }}
+        </h2>
+        <h2 class="text-3xl font-serif font-extrabold md:text-4xl text-shadow-2" id="quote_parts"></h2>
+      </div>
+      <script>
+        {{ $quotes := .Site.Params.FullIntroVideo.Quotes }}
+        {{ $quotes_split := split $quotes  "," }}
+        let current_quote = 0;
+        const quotes = {{ $quotes_split}};
+        function changeQuote() {
+          current_quote = (current_quote + 1) % quotes.length;
+          const element = document.getElementById('quote_parts');
+          element.innerHTML = quotes[current_quote];
+          setTimeout(changeQuote, 1500);
+        }
+        setTimeout(changeQuote, 0);
+      </script>
+    </div>
+
+    <video autoplay loop muted class="md:absolute z-10 w-auto">
+      <source src="{{ .Site.Params.FullIntroVideo.VideoUrl }}" type="{{ .Site.Params.FullIntroVideo.VideoType }}" />
+      Your browser does not support the video tag.
+    </video>
+  </header>
+  {{ end }}
+
   {{ if .Site.Params.ShowFullIntroSlide}}
   <div class="bg-gray-200 dark:bg-neutral-950 relative overflow-hidden lg:h-[620px] bg-xy-animated bg-stars">
     {{ if .Site.Params.IncludeStars }}
