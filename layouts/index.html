@@ -1,17 +1,15 @@
 {{ define "main" }}
 
 <main>
-  {{ partial "slide-fullintrovideo" . }}
-  {{ partial "slide-fullintro" . }}
-  {{ partial "slide-simpleintro" . }}
+  {{ partial "slide-fullintrovideo"  (dict "Context" .Site.Params.Intro ) }}
+  {{ partial "slide-fullintro" (dict "Context" .Site.Params.Intro ) }}
+  {{ partial "slide-simpleintro"  (dict "Context" .Site.Params.Intro ) }}
 
-  {{ partial "home-details" . }}
-  {{ partial "home-moredetails" . }}
-  {{ partial "home-sponsors" . }}
+  {{ partial "section-right" (dict "Context" .Site.Params.Details ) }}
+  {{ partial "section-left" (dict "Context" .Site.Params.MoreDetails ) }}
+  {{ partial "section-logos" (dict "Context" .Site.Params.Sponsors ) }}
   {{ partial "home-blog" . }}
 
-  {{ if not .Site.Params.DisableStayUptodateHome }}
   {{ partial "stayuptodate" . }}
-  {{ end }}
 </main>
 {{ end }}

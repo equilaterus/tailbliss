@@ -17,7 +17,7 @@
       </div>
       <div class="relative w-full h-auto px-4 py-6 mx-auto sm:max-w-3xl sm:px-6 lg:px-0 lg:py-20">
         <div class="overflow-hidden shadow-xl rounded-2xl">
-          {{ $Detailsimage := resources.Get .Site.Params.Details.Image }}
+          {{ $Detailsimage := resources.Get .Context.Image }}
           {{ with $Detailsimage }}
           {{ with .Resize (printf "%dx%d webp q90" .Width .Height) }}
           <img imgh src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" class="w-full h-auto"
@@ -30,17 +30,17 @@
     <div class="relative max-w-md px-4 mx-auto sm:max-w-3xl sm:px-6 lg:px-0">
       <div class="md:pt-12 sm:pt-6 lg:pt-20">
         <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-50 sm:text-4xl">
-          {{ .Site.Params.Details.Heading }}
+          {{ .Context.Heading }}
         </h2>
         <div class="mt-6 text-gray-900 dark:text-white">
           <div class="mt-6 space-y-6 text-gray-900 dark:text-white">
-            {{ range .Site.Params.Details.Content }}
+            {{ range .Context.Content }}
             <p class="text-lg text-gray-900 dark:text-white">
               {{ .text }}
             </p>
             {{ end }}
 
-            {{ partial "default-link" (dict "Lnk" .Site.Params.Details.ContentLink) }}
+            {{ partial "default-link" (dict "Lnk" .Context.Link) }}
           </div>
         </div>
       </div>
