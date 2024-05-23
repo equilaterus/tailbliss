@@ -1,9 +1,0 @@
-{{ if .Lnk }}
-  {{ $lnk := .Lnk }}
-  {{ $lnk_split := split $lnk  "->" }}
-    <div class="flex">
-      <a href="{{ index $lnk_split 1 }}" class="float-none px-4 py-2 mt-2 text-sm text-white font-semibold bg-primary-400 rounded-lg hover:text-white focus:text-white hover:bg-primary-500 focus:bg-primary-700 focus:outline-none focus:shadow-outline">
-        {{ index $lnk_split 0 }}
-      </a>
-    </div>
-{{ end }}
