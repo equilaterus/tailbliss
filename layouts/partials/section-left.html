@@ -12,7 +12,9 @@
                         {{ .text }}
                     </p>
                     {{ end }}
-                    {{ partial "default-link" (dict "Lnk" .Context.Link) }}
+                    <div class="flex justify-center lg:justify-start mb-6">
+                      {{ partial "link-primary" .Context.Link }}
+                    </div>
                   </div>
               </div>
           </div>
