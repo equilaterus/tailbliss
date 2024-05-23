@@ -1,6 +1,8 @@
 {{ define "main" }}
 
 <main>
+
+  {{ partial "debug" }}
   {{ partial "slide-fullintrovideo"  (dict "Context" .Site.Params.Intro ) }}
   {{ partial "slide-fullintro" (dict "Context" .Site.Params.Intro ) }}
   {{ partial "slide-simpleintro"  (dict "Context" .Site.Params.Intro ) }}
