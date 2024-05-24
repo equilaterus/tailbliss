@@ -1,0 +1,4 @@
+{{ if . }}
+  {{ $partial := cond (not .partial) "link-primary" .partial }}
+  {{ partial $partial . }}
+{{ end }}
