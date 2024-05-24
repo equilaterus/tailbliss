@@ -1,6 +1,5 @@
 {{ if . }}
-  {{ $lnk_split := split .  "->" }}
-  <a href="{{ index $lnk_split 1 }}" class="float-none px-4 py-2 mt-2 text-white font-semibold bg-gray-500 rounded-lg hover:text-white focus:text-white hover:bg-gray-600 focus:bg-gray-600 focus:outline-none focus:shadow-outline">
-    {{ index $lnk_split 0 }}
+  <a href="{{ .url }}" class="float-none px-4 py-2 mt-2 text-white font-semibold bg-gray-500 rounded-lg hover:text-white focus:text-white hover:bg-gray-600 focus:bg-gray-600 focus:outline-none focus:shadow-outline">
+    {{ .text }}
   </a>
 {{ end }}
