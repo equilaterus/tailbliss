@@ -21,6 +21,11 @@
           </p>
           {{ end }}
         </div>
+
+        <div class="text-center pt-4">
+          {{ partial "link-secondary" .Site.Params.StayUpToDate.Link }}
+        </div>
+
         {{ if .Site.Params.StayUpToDate.ShowForm }}
         <form action="{{ .Site.Params.StayUpToDate.Action }}" class="mt-12 sm:mx-auto sm:flex sm:max-w-lg">
           <div class="flex-1 min-w-0">
