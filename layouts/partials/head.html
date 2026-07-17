@@ -17,16 +17,19 @@
 </script>
 {{ end }}
 
-{{ $styles := resources.Get "/css/out/style.css" | postCSS }}
-{{ if .Site.IsServer }}
+{{ $styles := resources.Get "css/out/style.css" }}
+{{ if hugo.IsServer }}
   <link rel="stylesheet" href="{{ $styles.RelPermalink }}" />
 {{ else }}
-  {{ $styles := $styles | minify | fingerprint | resources.PostProcess }}
+  {{ $styles := $styles | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" />
 {{ end }}
 
 {{ if .Site.Params.IncludeStars }}
-  {{ $stars := resources.Get "/css/out/stars.min.css" | postCSS }}
+  {{ $stars := resources.Get "css/stars.scss" | toCSS (dict "outputStyle" "compressed") }}
+  {{ if not hugo.IsServer }}
+    {{ $stars = $stars | fingerprint }}
+  {{ end }}
   <link rel="preload" href="{{ $stars.RelPermalink }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="{{ $stars.RelPermalink }}"></noscript>
 {{ end}}
@@ -36,4 +39,3 @@
   {{ $js := resources.Get "js/darkmode.js" | js.Build }}
   <script defer src="{{ $js.RelPermalink }}"></script>
 {{ end }}
-

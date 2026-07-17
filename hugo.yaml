@@ -181,12 +181,6 @@ menu:
       name: Contact
       url: /contact/
       weight: 50
-
-markup:
-  goldmark:
-    renderer:
-      unsafe: true
-
 taxonomies:
   category: Categories
   tag: Tags
@@ -202,7 +196,7 @@ privacy:
   instagram:
     disable: false
     simple: false
-  twitter:
+  x:
     disable: false
     enableDNT: false
     simple: false
